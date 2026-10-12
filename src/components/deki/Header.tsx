@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { WHATSAPP_URL } from "./contact";
-import logo from "@/assets/brand/deki-logo.png.asset.json";
+import logo from "@/assets/brand/deki-logo.png";
 
 const NAV = [
   { href: "#catalogo", label: "Catálogo" },
@@ -34,7 +34,7 @@ export function Header() {
     >
       <div className="container-deki flex h-16 items-center justify-between md:h-20">
         <a href="#top" className="flex min-h-11 items-center" aria-label="DEKI — início">
-          <img src={logo.url} alt="DEKI Móveis Clínicos" width={321} height={188} className="h-12 w-auto object-contain md:h-16" />
+          <img src={logo} alt="DEKI Móveis Clínicos" width={1376} height={768} className="h-12 w-auto object-contain md:h-16" />
         </a>
         <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex">
           {NAV.map((n) => (

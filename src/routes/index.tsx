@@ -10,7 +10,7 @@ import hero from "@/assets/hero-cabinet.jpg";
 import cart from "@/assets/cart-compact.jpg";
 import counter from "@/assets/counter-sink.jpg";
 import set from "@/assets/set-clinic.jpg";
-import logo from "@/assets/brand/deki-logo.png.asset.json";
+import logo from "@/assets/brand/deki-logo.png";
 
 const IMG: Record<string, string> = { hero, cart, counter, set };
 
@@ -357,7 +357,7 @@ function Footer() {
       <div className="container-deki grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <a href="#top" aria-label="DEKI — início" className="inline-block">
-            <img src={logo.url} alt="DEKI Móveis Clínicos" width={321} height={188} className="h-24 w-auto object-contain" loading="lazy" />
+            <img src={logo} alt="DEKI Móveis Clínicos" width={1376} height={768} className="h-24 w-auto object-contain" loading="lazy" />
           </a>
           <p className="mt-4 max-w-xs text-sm text-slate">Móveis clínicos e odontológicos. Fábrica própria em Curitiba/PR há 40 anos.</p>
           <div className="mt-6 flex gap-2">
