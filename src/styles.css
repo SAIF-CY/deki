@@ -196,6 +196,16 @@
 .card-zoom img { transition: transform 300ms ease-out; }
 .card-zoom:hover img { transform: scale(1.03); }
 
+.client-logo {
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter 250ms ease, opacity 250ms ease;
+}
+.client-cell:hover .client-logo {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
 .page-fade { animation: page-fade 200ms ease; }
 @keyframes page-fade { from { opacity: 0; } }
 
@@ -204,5 +214,5 @@
   *, *::before, *::after { transform: none !important; }
   .reveal { transition: opacity 100ms linear; transition-delay: 0ms; }
   .hero-seq > * { animation-duration: 100ms; animation-delay: 0ms !important; }
-  .card-zoom img, .btn { transition: none; }
+  .card-zoom img, .client-logo, .btn { transition: none; }
 }
