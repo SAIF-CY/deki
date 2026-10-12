@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "164a2b73-5c53-4352-a2ec-44e81e9d1cb8",
+  "asset_id": "9bdf1d76-d0c4-49c4-a1fd-1175265cdaa9",
   "project_id": "3cb16caa-6e32-47de-8346-c1439bbb8495",
-  "url": "/__l5e/assets-v1/164a2b73-5c53-4352-a2ec-44e81e9d1cb8/deki-logo.png",
-  "r2_key": "a/v1/3cb16caa-6e32-47de-8346-c1439bbb8495/164a2b73-5c53-4352-a2ec-44e81e9d1cb8/deki-logo.png",
-  "original_filename": "deki-logo.png",
-  "size": 47480,
+  "url": "/__l5e/assets-v1/9bdf1d76-d0c4-49c4-a1fd-1175265cdaa9/deki-logo-transparent.png",
+  "r2_key": "a/v1/3cb16caa-6e32-47de-8346-c1439bbb8495/9bdf1d76-d0c4-49c4-a1fd-1175265cdaa9/deki-logo-transparent.png",
+  "original_filename": "deki-logo-transparent.png",
+  "size": 807683,
   "content_type": "image/png",
-  "created_at": "2026-10-12T21:08:46Z"
+  "created_at": "2026-10-12T21:10:25Z"
 }
