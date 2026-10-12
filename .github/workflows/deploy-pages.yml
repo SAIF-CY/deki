@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+# Deploys the pre-rendered static build to GitHub Pages.
+# The nitro SSR bundle is not used here — Pages can only serve static files, so the
+# site is built with TanStack Start prerendering (see vite.config.ts).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Only the latest deploy matters for a Pages site; let a new one cancel a running one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # npm cannot resolve this dependency tree (an arborist bug on vitest's peer set),
+      # and the project ships a bun.lock, so bun is the supported installer here.
+      - name: Install
+        run: bun install --frozen-lockfile
+
+      # Pages serves the project from https://<owner>.github.io/deki/ unless a custom
+      # domain is attached, in which case the site lives at the domain root.
+      - name: Build
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE || '/deki/' }}
+        run: bun run build
+
+      # 404.html is served at whatever URL the visitor requested, so its internal
+      # links cannot be relative — the base path is baked in here.
+      - name: Resolve base path in 404.html
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE || '/deki/' }}
+        run: sed -i "s|{{BASE}}|$PAGES_BASE|g" .output/public/404.html
+
+      - name: Verify the build produced a usable site
+        run: |
+          set -euo pipefail
+          test -f .output/public/index.html || { echo "::error::index.html missing"; exit 1; }
+          test -f .output/public/404.html   || { echo "::error::404.html missing"; exit 1; }
+          grep -q "{{BASE}}" .output/public/404.html && { echo "::error::unresolved base in 404.html"; exit 1; }
+          echo "index.html: $(wc -c < .output/public/index.html) bytes"
+          echo "404.html:   $(wc -c < .output/public/404.html) bytes"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

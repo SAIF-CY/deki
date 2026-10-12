@@ -1,0 +1,102 @@
+<!doctype html>
+<!--
+  Static 404 for GitHub Pages. The prerendered app only emits "/" — Pages serves this
+  file for any unmatched path, and the router's notFoundComponent only exists at runtime,
+  so this has to be a standalone page.
+
+  {{BASE}} is substituted with the deploy base path ("/" with a custom domain,
+  "/deki/" otherwise) by the deploy workflow. It can't be a relative href: Pages serves
+  this file at whatever URL the visitor requested, so "./" would resolve against the
+  requested path rather than the site root.
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página não encontrada — DEKI Móveis Clínicos</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="{{BASE}}favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500&display=swap"
+    />
+    <style>
+      :root {
+        --bone: #f7f5f1;
+        --graphite: #1f2124;
+        --slate: #5b6470;
+        --teal: #17a3ab;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background: var(--bone);
+        color: var(--graphite);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main {
+        max-width: 34rem;
+        text-align: center;
+      }
+      .eyebrow {
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--teal);
+        font-weight: 600;
+        margin: 0 0 1rem;
+      }
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 500;
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        line-height: 1.1;
+        margin: 0 0 1rem;
+      }
+      p {
+        color: var(--slate);
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        margin: 0 0 2rem;
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        padding: 0 1.5rem;
+        border-radius: 2px;
+        background: var(--teal);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 500;
+      }
+      a:hover {
+        filter: brightness(0.94);
+      }
+      a:focus-visible {
+        outline: 2px solid var(--graphite);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Erro 404</p>
+      <h1>Página não encontrada</h1>
+      <p>
+        O endereço que você tentou abrir não existe ou foi movido. Volte para a
+        página inicial ou fale com a gente pelo WhatsApp.
+      </p>
+      <a href="{{BASE}}">Ir para o início</a>
+    </main>
+  </body>
+</html>
