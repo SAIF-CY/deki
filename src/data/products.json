@@ -1,0 +1,53 @@
+{
+  "lines": [
+    { "id": "lumen", "name": "Lumen", "tagline": "Linha premium", "description": "Mesas auxiliares com gavetas e nichos, acabamento superior.", "image": "hero" },
+    { "id": "standard", "name": "Standard", "tagline": "Linha intermediária", "description": "O equilíbrio entre robustez e custo para o dia a dia.", "image": "set" },
+    { "id": "compact", "name": "Compact", "tagline": "Linha compacta", "description": "PIAs, portas e gaveteiros para espaços reduzidos.", "image": "cart" },
+    { "id": "conjunto", "name": "Conjunto Clínico", "tagline": "Conjuntos completos", "description": "O consultório inteiro, projetado como um só sistema.", "image": "counter" }
+  ],
+  "featured": [
+    {
+      "name": "Gaveteiro Lumen 5 Gavetas",
+      "line": "Lumen",
+      "image": "hero",
+      "summary": "Cinco gavetas em corrediça telescópica, tampo em peça única e rodízios com trava.",
+      "specs": [
+        ["Dimensões", "49 × 72 × 39 cm"],
+        ["Gavetas", "5 · corrediça telescópica"],
+        ["Estrutura", "MDF com pintura PU"],
+        ["Rodízios", "4 · 2 com trava"]
+      ]
+    },
+    {
+      "name": "Carrinho Compact Nicho",
+      "line": "Compact",
+      "image": "cart",
+      "summary": "Nicho aberto para equipamentos, três gavetas e mobilidade total entre cadeiras.",
+      "specs": [
+        ["Dimensões", "45 × 68 × 40 cm"],
+        ["Gavetas", "3 + nicho aberto"],
+        ["Estrutura", "MDF com pintura PU"],
+        ["Rodízios", "4 · 2 com trava"]
+      ]
+    },
+    {
+      "name": "Balcão PIA Conjunto Clínico",
+      "line": "Conjunto Clínico",
+      "image": "counter",
+      "summary": "Balcão modular com cuba integrada, portas e bloco central de gavetas.",
+      "specs": [
+        ["Dimensões", "240 × 88 × 55 cm"],
+        ["Módulos", "4 portas + 5 gavetas"],
+        ["Cuba", "Integrada ao tampo"],
+        ["Rodapé", "Recuado, fácil limpeza"]
+      ]
+    }
+  ],
+  "testimonials": [
+    { "text": "Produto muito bem acabado, chegou bem embalado e no prazo. Recomendo.", "author": "Comprador verificado", "source": "Mercado Livre" },
+    { "text": "Gavetas deslizam perfeitamente, material firme. Superou o esperado.", "author": "Comprador verificado", "source": "Mercado Livre" },
+    { "text": "Ficou lindo no consultório. Fácil de montar e muito resistente.", "author": "Comprador verificado", "source": "Mercado Livre" },
+    { "text": "Segunda compra com a DEKI. Qualidade se mantém excelente.", "author": "Comprador verificado", "source": "Mercado Livre" },
+    { "text": "Atendimento rápido pelo WhatsApp e entrega para o interior sem problemas.", "author": "Comprador verificado", "source": "Mercado Livre" }
+  ]
+}
