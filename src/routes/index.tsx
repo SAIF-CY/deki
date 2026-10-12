@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Award, Trophy, ShieldCheck, Truck, Star, MessageCircle, Mail, MapPin, Clock, ArrowRight, Instagram, Facebook, Youtube } from "lucide-react";
 import { Header } from "@/components/deki/Header";
 import { Reveal } from "@/components/deki/Reveal";
+import { ClientsStrip } from "@/components/deki/ClientsStrip";
 import { CONTACT, WHATSAPP_URL } from "@/components/deki/contact";
 import data from "@/data/products.json";
 import hero from "@/assets/hero-cabinet.jpg";
@@ -40,6 +41,7 @@ function Index() {
         <Catalog />
         <Showcase />
         <FortyYears />
+        <ClientsStrip />
         <About />
         <Testimonials />
         <Contact />
