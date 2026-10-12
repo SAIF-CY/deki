@@ -10,4 +10,5 @@
 <!-- LOVABLE:END -->
 
 ## DEKI presentation
+- Use a single CDN logo asset in the header and footer, and derive the local favicon from its distinctive detail; this keeps brand placements consistent.
 - Keep the client trust strip in a dedicated browser-safe component with a static client list importing CDN asset pointers; this preserves the original logos without fetching data or adding an automatic carousel.
