@@ -160,7 +160,7 @@ function Catalog() {
 
 function Showcase() {
   const [idx, setIdx] = useState(0);
-  const p = data.featured[idx];
+  const p = data.featured[idx] ?? data.featured[0]!;
   return (
     <section id="vitrine" className="section-y border-t border-line bg-surface">
       <div className="container-deki">
