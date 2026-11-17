@@ -206,22 +206,21 @@
   opacity: 1;
 }
 
-/* Client band: two copies of the logo row scroll left forever. The -50% shift
-   lands exactly on the start of the second copy, so the loop is seamless. */
+/* Client band: a real horizontally-scrollable row that JS keeps drifting, so it
+   behaves the same on desktop and mobile (touch can swipe it). Two copies of the
+   logos make the wrap seamless: the loop jumps back by half the scroll width. */
 .clients-marquee {
-  overflow: hidden;
   mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 .clients-track {
   display: flex;
-  width: max-content;
-  animation: clients-scroll 55s linear infinite;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
 }
-@keyframes clients-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+.clients-track::-webkit-scrollbar { display: none; }
 
 .page-fade { animation: page-fade 200ms ease; }
 @keyframes page-fade { from { opacity: 0; } }
@@ -244,10 +243,4 @@
   .hero-seq > * { animation-duration: 100ms; animation-delay: 0ms !important; }
   .card-zoom img, .client-logo, .btn { transition: none; }
   .carousel-track { scroll-behavior: auto; }
-  .clients-track { animation: none; }
-  .clients-marquee {
-    overflow-x: auto;
-    mask-image: none;
-    -webkit-mask-image: none;
-  }
 }
