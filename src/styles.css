@@ -201,9 +201,14 @@
   opacity: 0.65;
   transition: filter 250ms ease, opacity 250ms ease;
 }
-.client-cell:hover .client-logo {
-  filter: grayscale(0);
-  opacity: 1;
+/* Colour only on devices with a real pointer. On touch screens the finger keeps
+   a sticky :hover under it, so every logo scrolling past that point turned
+   coloured instead of staying grey. */
+@media (hover: hover) and (pointer: fine) {
+  .client-cell:hover .client-logo {
+    filter: grayscale(0);
+    opacity: 1;
+  }
 }
 
 /* Client band: a real horizontally-scrollable row that JS keeps drifting, so it
