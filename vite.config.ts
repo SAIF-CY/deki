@@ -11,7 +11,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // resolve against the domain root and 404, so the base is configurable per deploy:
 //   - custom domain attached  -> PAGES_BASE=/     (site lives at the root)
 //   - default <owner>.github.io/deki/  -> PAGES_BASE=/deki/
-const base = process.env.PAGES_BASE ?? "/";
+const base = process.env["PAGES_BASE"] ?? "/";
 
 export default defineConfig({
   vite: { base },

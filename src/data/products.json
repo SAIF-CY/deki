@@ -1,45 +1,105 @@
 {
   "lines": [
-    { "id": "lumen", "name": "Lumen", "tagline": "Linha premium", "description": "Mesas auxiliares com gavetas e nichos, acabamento superior.", "image": "hero" },
-    { "id": "standard", "name": "Standard", "tagline": "Linha intermediária", "description": "O equilíbrio entre robustez e custo para o dia a dia.", "image": "set" },
-    { "id": "compact", "name": "Compact", "tagline": "Linha compacta", "description": "PIAs, portas e gaveteiros para espaços reduzidos.", "image": "cart" },
-    { "id": "conjunto", "name": "Conjunto Clínico", "tagline": "Conjuntos completos", "description": "O consultório inteiro, projetado como um só sistema.", "image": "counter" }
+    {
+      "id": "lumen",
+      "name": "Lumen",
+      "tagline": "Linha premium",
+      "description": "Mesas auxiliares com gavetas, bandejas e abas que ampliam a área de trabalho.",
+      "image": "mesa-5-gavetas"
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "tagline": "Linha intermediária",
+      "description": "Armários e módulos com pia para o dia a dia do consultório.",
+      "image": "armario-pia"
+    },
+    {
+      "id": "compact",
+      "name": "Compact",
+      "tagline": "Linha compacta",
+      "description": "Carrinhos e gaveteiros para espaços reduzidos.",
+      "image": "carrinho"
+    },
+    {
+      "id": "conjunto",
+      "name": "Conjunto Clínico",
+      "tagline": "Conjuntos completos",
+      "description": "Mesa auxiliar e armário com pia projetados como um só sistema.",
+      "image": "combo"
+    }
   ],
   "featured": [
     {
-      "name": "Gaveteiro Lumen 5 Gavetas",
-      "line": "Lumen",
-      "image": "hero",
-      "summary": "Cinco gavetas em corrediça telescópica, tampo em peça única e rodízios com trava.",
-      "specs": [
-        ["Dimensões", "49 × 72 × 39 cm"],
-        ["Gavetas", "5 · corrediça telescópica"],
-        ["Estrutura", "MDF com pintura PU"],
-        ["Rodízios", "4 · 2 com trava"]
-      ]
-    },
-    {
-      "name": "Carrinho Compact Nicho",
+      "name": "Carrinho Auxiliar 5 Gavetas",
       "line": "Compact",
-      "image": "cart",
-      "summary": "Nicho aberto para equipamentos, três gavetas e mobilidade total entre cadeiras.",
+      "slug": "carrinho",
+      "summary": "Cinco gavetas com corrediça e rodízios, para ter o material à mão durante o atendimento.",
       "specs": [
-        ["Dimensões", "45 × 68 × 40 cm"],
-        ["Gavetas", "3 + nicho aberto"],
-        ["Estrutura", "MDF com pintura PU"],
-        ["Rodízios", "4 · 2 com trava"]
+        ["Medidas", "L 49 × A 72 × P 37 cm"],
+        ["Gavetas", "5"],
+        ["Rodízios", "4"],
+        ["Material", "MDF Branco TX"]
       ]
     },
     {
-      "name": "Balcão PIA Conjunto Clínico",
+      "name": "Combo Mesa Auxiliar + Armário c/ Pia",
       "line": "Conjunto Clínico",
-      "image": "counter",
-      "summary": "Balcão modular com cuba integrada, portas e bloco central de gavetas.",
+      "slug": "combo",
+      "summary": "Armário com pia e mesa auxiliar no mesmo conjunto, prontos para montar o consultório.",
       "specs": [
-        ["Dimensões", "240 × 88 × 55 cm"],
-        ["Módulos", "4 portas + 5 gavetas"],
-        ["Cuba", "Integrada ao tampo"],
-        ["Rodapé", "Recuado, fácil limpeza"]
+        ["Armário", "L 105 × A 85 × P 53 cm"],
+        ["Mesa auxiliar", "L 51 × A 76 × P 53 cm"],
+        ["Cuba", "Inox"],
+        ["Material", "MDF Branco TX"]
+      ]
+    },
+    {
+      "name": "Mesa Auxiliar c/ Abas Levantadas",
+      "line": "Lumen",
+      "slug": "mesa-abas",
+      "summary": "Abas laterais que dobram e ampliam a área de apoio quando você precisa de mais espaço.",
+      "specs": [
+        ["Medidas", "L 49 × A 72 × P 39 cm"],
+        ["Com abas abertas", "103 cm de largura"],
+        ["Rodízios", "4"],
+        ["Material", "MDF Branco TX"]
+      ]
+    },
+    {
+      "name": "Mesa Apoio 5 Gavetas",
+      "line": "Lumen",
+      "slug": "mesa-5-gavetas",
+      "summary": "Cinco gavetas de alturas diferentes para instrumentos, materiais e peças maiores.",
+      "specs": [
+        ["Medidas", "L 49 × A 72 × P 39 cm"],
+        ["Gavetas", "5 · 4, 4, 9,5, 9,5 e 18,5 cm"],
+        ["Rodízios", "4"],
+        ["Material", "MDF Branco TX"]
+      ]
+    },
+    {
+      "name": "Armário c/ Pia",
+      "line": "Standard",
+      "slug": "armario-pia",
+      "summary": "Armário com pia em inox e duas portas, para consultórios de estética, podologia e clínicas.",
+      "specs": [
+        ["Medidas", "L 80 × A 85 × P 53 cm"],
+        ["Cuba", "Inox"],
+        ["Portas", "2"],
+        ["Material", "MDF Branco TX"]
+      ]
+    },
+    {
+      "name": "Armário Clínico c/ Pia",
+      "line": "Conjunto Clínico",
+      "slug": "armario-clinico",
+      "summary": "Balcão com pia à direita, gavetas ao centro e armário dos dois lados.",
+      "specs": [
+        ["Medidas", "L 155 × A 85 × P 51 cm"],
+        ["Gavetas", "5"],
+        ["Cuba", "Inox"],
+        ["Rodízios", "4"]
       ]
     }
   ],

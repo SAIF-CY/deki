@@ -4,15 +4,12 @@ import { Award, Trophy, ShieldCheck, Truck, Star, MessageCircle, Mail, MapPin, C
 import { Header } from "@/components/deki/Header";
 import { Reveal } from "@/components/deki/Reveal";
 import { ClientsStrip } from "@/components/deki/ClientsStrip";
+import { Carousel } from "@/components/deki/Carousel";
+import { ProductModal, type Product } from "@/components/deki/ProductModal";
 import { CONTACT, WHATSAPP_URL } from "@/components/deki/contact";
 import data from "@/data/products.json";
-import hero from "@/assets/hero-cabinet.jpg";
-import cart from "@/assets/cart-compact.jpg";
-import counter from "@/assets/counter-sink.jpg";
-import set from "@/assets/set-clinic.jpg";
+import { productCover, productImages } from "@/lib/product-images";
 import logo from "@/assets/brand/deki-logo.png";
-
-const IMG: Record<string, string> = { hero, cart, counter, set };
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,12 +84,12 @@ function Hero() {
           </div>
         </div>
         <div className="relative lg:col-span-5 lg:col-start-8">
-          <div className="overflow-hidden rounded-[4px] bg-surface">
-            <img ref={imgRef} src={hero} alt="Gaveteiro DEKI branco com cinco gavetas e rodízios" width={1024} height={1280} className="h-auto w-full scale-[1.12]" />
+          <div className="overflow-hidden rounded-[4px] border border-line bg-surface">
+            <img ref={imgRef} src={productCover("carrinho")} alt="Carrinho auxiliar DEKI branco com cinco gavetas e bandeja organizadora" width={1015} height={1053} className="h-auto w-full scale-[1.12]" />
           </div>
           <p className="spec mt-4 flex justify-between text-slate">
-            <span>Gaveteiro Lumen 5G</span>
-            <span>49 × 72 × 39 cm</span>
+            <span>Carrinho Auxiliar 5G</span>
+            <span>49 × 72 × 37 cm</span>
           </p>
         </div>
       </div>
@@ -125,45 +122,89 @@ function Credibility() {
 }
 
 function Catalog() {
+  const [selected, setSelected] = useState<Product | null>(null);
+
   return (
     <section id="catalogo" className="section-y">
       <div className="container-deki">
         <Reveal className="grid gap-6 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <p className="eyebrow">Catálogo</p>
-            <h2 className="text-h2 mt-4">Quatro linhas, um mesmo padrão de fábrica.</h2>
+            <h2 className="text-h2 mt-4">Diversas linhas, um mesmo padrão de fábrica.</h2>
           </div>
           <p className="text-slate md:col-span-4 md:col-start-9">
-            Da mesa auxiliar ao consultório completo. Escolha a linha e fale com a fábrica.
+            Da mesa auxiliar ao consultório completo. Clique em um produto para ver todas as fotos e medidas.
           </p>
         </Reveal>
       </div>
-      <ul className="container-deki mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-4">
-        {data.lines.map((l, i) => (
-          <Reveal as="li" index={i} key={l.id} className="w-[78%] shrink-0 snap-start md:w-auto">
-            <a href={WHATSAPP_URL(`linha ${l.name}`)} target="_blank" rel="noopener" className="card-zoom group block rounded-[4px] border border-line bg-surface transition-colors duration-300 hover:border-teal-deep">
-              <div className="aspect-[4/5] overflow-hidden">
-                <img src={IMG[l.image]} alt={`Linha ${l.name}`} loading="lazy" width={800} height={1000} className="h-full w-full object-cover" />
-              </div>
-              <div className="border-t border-line p-5">
-                <p className="eyebrow text-slate">{l.tagline}</p>
-                <h3 className="mt-2 text-xl font-semibold">{l.name}</h3>
-                <p className="mt-2 text-sm text-slate">{l.description}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-deep">
-                  Consultar <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                </span>
-              </div>
-            </a>
-          </Reveal>
-        ))}
-      </ul>
+      <div className="container-deki mt-12">
+        <Carousel label="Produtos DEKI" controlsClassName="mt-4" autoMs={4500}>
+          {data.featured.map((p, i) => {
+            const cover = productCover(p.slug);
+            const total = productImages(p.slug).length;
+            const open = () => setSelected(p as Product);
+            return (
+              <Reveal as="li" index={i} key={p.name} className="w-[82%] shrink-0 snap-start sm:w-[52%] lg:w-[31.5%]">
+                <article className="flex h-full flex-col overflow-hidden rounded-[4px] border border-line bg-surface">
+                  <button
+                    type="button"
+                    onClick={open}
+                    aria-label={`Ver ${total} fotos e medidas de ${p.name}`}
+                    className="group/img relative block w-full overflow-hidden bg-surface"
+                  >
+                    <img
+                      src={cover}
+                      alt={p.name}
+                      loading="lazy"
+                      width={1100}
+                      height={1100}
+                      className="aspect-square w-full object-contain transition-transform duration-300 group-hover/img:scale-[1.02]"
+                    />
+                    <span className="absolute inset-x-0 bottom-3 mx-auto w-fit rounded-[2px] border border-line bg-surface/90 px-3 py-1.5 text-xs font-medium text-slate opacity-0 backdrop-blur transition-opacity duration-200 group-hover/img:opacity-100 group-focus-visible/img:opacity-100">
+                      Ver fotos ({total})
+                    </span>
+                  </button>
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="eyebrow text-slate">Linha {p.line}</p>
+                    <h3 className="mt-2 text-xl font-semibold leading-snug">
+                      <button type="button" onClick={open} className="text-left transition-colors hover:text-teal-deep">
+                        {p.name}
+                      </button>
+                    </h3>
+                    <p className="mt-2 text-sm text-slate">{p.summary}</p>
+                    <dl className="mt-5 border-t border-line">
+                      {p.specs.map(([k, v]) => (
+                        <div key={k} className="flex flex-col gap-0.5 border-b border-line py-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                          <dt className="text-xs text-slate">{k}</dt>
+                          <dd className="spec text-xs font-medium sm:text-right">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <div className="mt-auto pt-5">
+                      <a href={WHATSAPP_URL(p.name)} target="_blank" rel="noopener" className="btn btn-primary w-full">
+                        <MessageCircle className="h-4 w-4" aria-hidden /> Consultar
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
+        </Carousel>
+      </div>
+
+      {selected && (
+        <ProductModal
+          product={selected}
+          images={productImages(selected.slug)}
+          onClose={() => setSelected(null)}
+        />
+      )}
     </section>
   );
 }
 
 function Showcase() {
-  const [idx, setIdx] = useState(0);
-  const p = data.featured[idx] ?? data.featured[0]!;
   return (
     <section id="vitrine" className="section-y border-t border-line bg-surface">
       <div className="container-deki">
@@ -172,41 +213,40 @@ function Showcase() {
             <p className="eyebrow">Vitrine</p>
             <h2 className="text-h2 mt-4">Em destaque</h2>
           </div>
-          <div role="tablist" aria-label="Produtos em destaque" className="flex gap-2">
-            {data.featured.map((f, i) => (
-              <button
-                key={f.name}
-                role="tab"
-                aria-selected={i === idx}
-                aria-label={f.name}
-                onClick={() => setIdx(i)}
-                className={`spec h-11 min-w-11 rounded-[2px] border px-3 transition-colors ${i === idx ? "border-graphite bg-graphite text-bone" : "border-line hover:border-graphite"}`}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </button>
-            ))}
-          </div>
+          <p className="max-w-sm text-sm text-slate">
+            Modelos de fábrica, com medidas reais. Arraste para ver mais.
+          </p>
         </Reveal>
-        <div key={p.name} className="page-fade mt-12 grid gap-10 lg:grid-cols-12 lg:gap-6">
-          <div className="overflow-hidden rounded-[4px] bg-bone lg:col-span-7">
-            <img src={IMG[p.image]} alt={p.name} loading="lazy" width={1280} height={960} className="aspect-[4/3] h-full w-full object-cover" />
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <p className="eyebrow">Linha {p.line}</p>
-            <h3 className="mt-4 font-display text-3xl font-medium leading-tight md:text-4xl">{p.name}</h3>
-            <p className="mt-4 text-slate">{p.summary}</p>
-            <dl className="mt-8 border-t border-line">
-              {p.specs.map(([k, v]) => (
-                <div key={k} className="flex flex-col gap-1 border-b border-line py-3 sm:flex-row sm:justify-between">
-                  <dt className="text-sm text-slate">{k}</dt>
-                  <dd className="spec font-medium">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <a href={WHATSAPP_URL(p.name)} target="_blank" rel="noopener" className="btn btn-primary mt-8 w-full sm:w-auto">
-              <MessageCircle className="h-4 w-4" aria-hidden /> Consultar no WhatsApp
-            </a>
-          </div>
+        <div className="mt-12">
+          <Carousel label="Produtos em destaque" controlsClassName="mt-4">
+            {data.featured.map((p, i) => (
+              <Reveal as="li" index={i} key={p.name} className="w-[82%] shrink-0 snap-start sm:w-[52%] lg:w-[31.5%]">
+                <article className="flex h-full flex-col overflow-hidden rounded-[4px] border border-line bg-surface">
+                  <div className="overflow-hidden bg-surface">
+                    <img src={productCover(p.slug)} alt={p.name} loading="lazy" width={1100} height={1100} className="aspect-square w-full object-contain" />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="eyebrow text-slate">Linha {p.line}</p>
+                    <h3 className="mt-2 text-xl font-semibold leading-snug">{p.name}</h3>
+                    <p className="mt-2 text-sm text-slate">{p.summary}</p>
+                    <dl className="mt-5 border-t border-line">
+                      {p.specs.map(([k, v]) => (
+                        <div key={k} className="flex flex-col gap-0.5 border-b border-line py-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                          <dt className="text-xs text-slate">{k}</dt>
+                          <dd className="spec text-xs font-medium sm:text-right">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <div className="mt-auto pt-5">
+                      <a href={WHATSAPP_URL(p.name)} target="_blank" rel="noopener" className="btn btn-primary w-full">
+                        <MessageCircle className="h-4 w-4" aria-hidden /> Consultar
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </Carousel>
         </div>
       </div>
     </section>
